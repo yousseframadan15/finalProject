@@ -5,12 +5,12 @@
       <input type="text" v-model="title" name="title" placeholder="Add Book" />
     </div>
      <div class="form-control">
-      <label>Author : </label>
+      <label>auther : </label>
       <input
         type="text"
-        name="author"
-        v-model="author"
-        placeholder="Add Author"
+        name="auther"
+        v-model="auther"
+        placeholder="Add auther"
       />
     </div>
     <div class="form-control">
@@ -23,12 +23,12 @@
       />
     </div>
     <div class="form-control">
-      <label>Description : </label>
+      <label>discription : </label>
       <input
         type="text"
-        v-model="description"
-        name="description"
-        placeholder="Add Description"
+        v-model="discription"
+        name="discription"
+        placeholder="Add discription"
       />
     </div>
      <div class="form-control">
@@ -40,8 +40,10 @@
         placeholder="Add the Published date"
       />
     </div>
-    <input type="submit" value="Save book" class="btn btn-block" />
+    <input style="color:white; background-color:darkgreen;" type="submit" value="Save book" class="btn btn-block" />
   </form>
+  <hr>
+  <br>
 </template>
   
   <script>
@@ -52,8 +54,8 @@ export default {
       id: Math.floor(Math.random() * 10000),
       title: "",
       image:"",
-      author: "",
-      description: "",
+      auther: "",
+      discription: "",
       publish_date: "",
       // reminder: false,
     };
@@ -69,9 +71,9 @@ export default {
 
       const newbook = {
         title: this.title,
-        author: this.author,
+        auther: this.auther,
         image:this.image,
-        description: this.description,
+        discription: this.discription,
         publish_date: this.publish_date,
         //   reminder: this.reminder,
       };
@@ -79,9 +81,9 @@ export default {
       this.$emit("add-book", newbook);
 
       this.title = "";
-      this.author = "";
+      this.auther = "";
       this.image = "";
-      this.description = "";
+      this.discription = "";
       this.publish_date = "";
       // this.reminder = false
     },
@@ -109,7 +111,7 @@ export default {
   padding: 3px 7px;
   font-size: 15px;
   display: inline-table;
-  color: blue;
+  color: rgb(0, 0, 0);
 }
 
 .form-control-check {

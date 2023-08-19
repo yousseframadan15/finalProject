@@ -27,13 +27,15 @@ export default {
 }
 
 .book {
-  background: #0e4e6b;
+  background: #13693e;
   margin: 5px;
   padding: 10px 20px;
   cursor: pointer;
+  color: antiquewhite;
 }
 .book:hover{
-  background-color: darkgreen;
+  background-color: rgb(15, 88, 45);
+  color: rgb(255, 255, 255);
 }
 
 

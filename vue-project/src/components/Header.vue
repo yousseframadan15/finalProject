@@ -1,12 +1,13 @@
 <template>
   <header>
-    <h1>{{ title }}</h1>
+    <h1 style="color:white;">{{ title }}</h1>
     <Button
       @btn-click="$emit('toggle-add-book')"
       :text="showAddBook ? 'Close' : 'Add Book'"
-      :color="showAddBook ? 'red' : 'green'"
+      :color="showAddBook ? 'red' : '#13693e'"
     class="bot"
     />
+    
   </header>
 </template>
 <script>
@@ -29,7 +30,8 @@ header {
   align-items: center;
   margin-bottom: 20px;
 }
+
 .bot:hover{
-    color: rgb(0, 0, 0);
+    color: rgb(16, 185, 30);
 }
 </style>
