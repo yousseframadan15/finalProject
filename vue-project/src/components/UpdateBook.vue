@@ -40,16 +40,25 @@
           placeholder="Add the published Date"
         />
       </div>
+      <div class="form-control">
+        <label>id:</label>
+        <input
+          type="text"
+          name="id"
+          v-model="id"
+          placeholder="Add the book id"
+        />
+      </div>
       <input type="submit" value="Save book" class="btn btn-block" />
     </form>
   </template>
     
     <script>
   export default {
-    name: "Addbook",
+    name: "UpdateBook",
     data() {
       return {
-        id: Math.floor(Math.random() * 10000),
+        id:"",
         title: "",
         auther: "",
         image:"",
@@ -75,8 +84,9 @@
           publish_date: this.publish_date,
           
         };
+        let listy=[this.id,newbook]
   
-        this.$emit("add-book", newbook);
+        this.$emit("update-book", listy);
   
         this.title = "";
         this.auther = "";

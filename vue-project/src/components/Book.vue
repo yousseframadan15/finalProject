@@ -27,17 +27,16 @@ export default {
 }
 
 .book {
-  background: #13693e;
+  background: #116658;
   margin: 5px;
   padding: 10px 20px;
   cursor: pointer;
-  color: antiquewhite;
-}
-.book:hover{
-  background-color: rgb(15, 88, 45);
-  color: rgb(255, 255, 255);
+  color: white;
 }
 
+.book.reminder {
+  border-left: 5px solid green;
+}
 
 .book h3 {
   display: flex;

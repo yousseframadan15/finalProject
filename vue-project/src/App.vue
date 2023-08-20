@@ -1,21 +1,25 @@
 <template>
   <div class="container">
-    <Header 
-    @toggle-add-book="toggleAddBook"
-     @toggle-edit-book="toggleeditBook"
+    <Header @toggle-update-book="toggleUpdatebook"
+    @toggle-search-book="toggleAddsearch" 
+     @toggle-add-book="toggleAddBook"
       title="Library"
       :showAddBook="showAddBook"
-      :showeditBook="showeditBook"
-
+      :showAddsearch="showAddsearch"
+      :showupdatebook="showupdatebook"
     />
     <div v-show="showAddBook">
       <AddBook @add-book="AddBook" />
+      
     </div>
-     <div v-show="showEditBook">
-      <EditBook :book="selectedBook" />
+    <div v-show="showAddsearch">
+      <Searchbook @search-book="searchBook"/>
+      <Book  :book="book"/>
     </div>
-    <Books @delete-book="deleteBook" :books="books" :edit-book="editBook"  />
-
+    <div v-show="showupdatebook">
+      <UpdateBook @update-book="updateBook"/>
+    </div>
+   <Books @delete-book="deleteBook" :books="books" />
   </div>
 </template>
 
@@ -23,33 +27,46 @@
 import Header from "./components/Header.vue";
 import AddBook from "./components/AddBook.vue";
 import Books from "./components/Books.vue";
-import EditBook from "./components/EditBook.vue";
+import Searchbook from "./components/Searchbook.vue";
+import Book from "./components/Book.vue";
+import UpdateBook from "./components/UpdateBook.vue";
 export default {
   name: "App",
   components: {
     Header,
     Books,
     AddBook,
-    EditBook
+    Searchbook,
+    Book,
+    UpdateBook,
   },
   data() {
     return {
       books: [],
       showAddBook: false,
-      selectedBook: null,
-      showEditBook:false
+      book:{},
+      showAddsearch:false,
+      searched:false,
+      showupdatebook:false,
     };
   },
   methods: {
-     editBook(book) {
-    this.selectedBook = book;
-    this.showEditBook = true;
-  },
+    
+    async searchBook(title){
+      console.log(title.title)
+       const res = await fetch(`http://127.0.0.1:8000/books/${title.title}`)
+       const data =await res.json()
+       this.book=data
+
+    },
+    toggleUpdatebook(){
+      this.showupdatebook=!this.showupdatebook
+    },
+    toggleAddsearch(){
+      this.showAddsearch=!this.showAddsearch
+    },
     toggleAddBook(){
       this.showAddBook= !this.showAddBook
-    },
-    toggleeditBook(){
-      this.showeditBook= !this.showeditBook
     },
      async AddBook(book) {
       const res =await fetch('http://127.0.0.1:8000/books',{
@@ -63,29 +80,6 @@ export default {
       const data =await res.json()
       this.books = [...this.books, data];
     },
-    async updateBook(updatedBook) {
-      try {
-        const response = await fetch(`http://localhost:8000/books/${updatedBook.id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(updatedBook),
-        });
-
-        if (response.status === 200) {
-          const index = this.books.findIndex(book => book.id === updatedBook.id);
-          if (index !== -1) {
-            this.books[index] = updatedBook;
-          }
-        } else {
-          alert('Error updating book');
-        }
-      } catch (error) {
-        console.error('Error updating book:', error);
-        alert('An error occurred while updating the book.');
-      }
-      },
      async deleteBook(id) {
       if (confirm("Are you sure?")) {
         const res=await fetch(`http://127.0.0.1:8000/books/${id}`,{
@@ -98,6 +92,19 @@ export default {
         const res =await fetch('http://127.0.0.1:8000/books')
         const data =await res.json()
         return data
+    },
+    async updateBook(listy){
+        let id=listy[0];
+        let booke=listy[1];
+        const res =await fetch(`http://127.0.0.1:8000/books/${id}`,{
+        method:"PUT",
+        headers:{
+          'content-type':'application/json',
+        },
+        body:JSON.stringify(booke),
+      })
+      console.log(res)
+      this.books =await this.fetchBooks()
     },
     async fetchBook(id){
         const res =await fetch(`http://127.0.0.1:8000/books/${id}`)
@@ -136,7 +143,7 @@ body {
 
 .btn {
   display: inline-block;
-  background: #271a63;
+  background: #116658;
   color: #fff;
   border: none;
   padding: 10px 20px;
