@@ -125,20 +125,29 @@ export default {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  
+  /* background: url('./components/dow'); */
+  /* background-size: cover; */
 }
 
 body {
   font-family: 'Poppins', sans-serif;
+  background: url('./components/wallpaperflare.com_wallpaper.jpg');
+  /* background-attachment: fixed; */
+  background-size: cover;
 }
 
 .container {
-  max-width: 90%;
+  width: 200%;
+  height: auto;
   margin: 30px auto;
-  overflow: auto;
+  /* overflow: auto; */
   min-height: 300px;
   border: 2px solid steelblue;
   padding: 30px;
   border-radius: 5px;
+  background: linear-gradient(0deg, rgba(34,193,195,.3) 0%, rgba(253,187,45,.3) 100%);
+  z-index: 5;
 }
 
 .btn {
@@ -157,6 +166,10 @@ body {
 
 .btn:focus {
   outline: none;
+}
+.btn:hover {
+  background-color: cornflowerblue;
+  color: #116658;
 }
 
 .btn:active {

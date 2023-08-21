@@ -1,10 +1,13 @@
 <template>
   <div class="book">
     <h3>
-      {{ book.title }}
+      Book title : {{ book.title }}
+      <br>
+      Book Auther : {{ book.auther }}
+      <br>
+      Book ID : {{ book.id }}
       <i @click="onDelete(book.id)" class="fas fa-times"></i>
     </h3>
-    <p>{{ book.author }}</p>
   </div>
 </template>
 <script>
@@ -27,11 +30,16 @@ export default {
 }
 
 .book {
-  background: #116658;
+  background: rgba(17,102,88,.7);
   margin: 5px;
   padding: 10px 20px;
   cursor: pointer;
   color: white;
+   border: none;
+    border-radius: 5px;
+}
+.book:hover{
+  background-color: gray;
 }
 
 .book.reminder {

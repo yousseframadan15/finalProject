@@ -5,6 +5,9 @@
         <input type="text" v-model="title" name="title" placeholder="Tittle" />
       </div>
       <input type="submit" value="search" class="btn btn-block">
+       <br>
+      <hr>
+      <hr>
  </form>    
     
 </template>
@@ -45,6 +48,7 @@ export default{
 
 .form-control label {
   display: block;
+  color: white;
 }
 
 .form-control input {
@@ -53,6 +57,10 @@ export default{
   margin: 5px;
   padding: 3px 7px;
   font-size: 17px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 10px;
 }
 
 .form-control-check {

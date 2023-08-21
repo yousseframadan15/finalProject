@@ -9,12 +9,12 @@
       <Button
         @toggle-search-book="$emit('toggle-search-book')"
         :text="showAddsearch ? 'Close' : 'search'"
-        :color="showAddsearch ? 'red' : 'green'"
+        :color="showAddsearch ? 'red' : 'yellow'"
       />
       <Button
         @toggle-update-book="$emit('toggle-update-book')"
         :text="showupdatebook ? 'Close' : 'update'"
-        :color="showupdatebook ? 'red' : 'green'"
+        :color="showupdatebook ? 'red' : 'blue'"
       />
     </header>
   </template>

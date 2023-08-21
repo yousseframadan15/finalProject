@@ -50,6 +50,9 @@
         />
       </div>
       <input type="submit" value="Save book" class="btn btn-block" />
+       <br>
+      <hr>
+      <hr>
     </form>
   </template>
     
@@ -109,6 +112,7 @@
   
   .form-control label {
     display: block;
+    color: white;
   }
   
   .form-control input {
@@ -117,6 +121,10 @@
     margin: 5px;
     padding: 3px 7px;
     font-size: 17px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+      border: none;
+    border-radius: 10px;
   }
   
   .form-control-check {
